@@ -80,7 +80,7 @@ for combo in combos:
     combo_probs.append([combo, combo_prob(combo), np.array(find_probs(combo))])
 combo_probs = sorted(combo_probs, key=lambda x:-x[1])
 
-t = PrettyTable(['Prob of combo', 'Combo', 'Prob of each card common'])
+t = PrettyTable(['Prob of combo', 'Combo', 'Prob of each suit common'])
 for x in combo_probs:
     t.add_row([f"{x[1]:.3f}", x[0], x[2]])
 print(t)
