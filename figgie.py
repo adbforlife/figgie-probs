@@ -3,6 +3,7 @@
 
 from math import comb
 from itertools import permutations
+from prettytable import PrettyTable
 import numpy as np
 np.set_printoptions(formatter={'float': lambda x: "{0:0.3f}".format(x)})
 
@@ -14,12 +15,10 @@ def find_prob(x):
     x_and_common = 0.25 * conditional_x(x, 12)
     return x_and_common / (x_and_common + 0.5 * conditional_x(x, 10) + 0.25 * conditional_x(x, 8))
 
-print('-----------')
-print("num_cards", "prob_common_suit")
+t = PrettyTable(["Num cards", "Prob common suit"])
 for i in range(10):
-    print(i, f"{find_prob(i):.3f}")
-print('-----------')
-print()
+    t.add_row([i, f"{find_prob(i):.3f}"])
+print(t)
 
 possibles = []
 for i in range(4):
@@ -81,9 +80,8 @@ for combo in combos:
     combo_probs.append([combo, combo_prob(combo), np.array(find_probs(combo))])
 combo_probs = sorted(combo_probs, key=lambda x:-x[1])
 
-print('-----------')
-print('combo prob_of_combo prob_of_each_card')
+t = PrettyTable(['Prob of combo', 'Combo', 'Prob of each card common'])
 for x in combo_probs:
-    print(x[0], f"{x[1]:.3f}", x[2])
-print('-----------')
+    t.add_row([f"{x[1]:.3f}", x[0], x[2]])
+print(t)
 
