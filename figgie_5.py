@@ -9,14 +9,14 @@ np.set_printoptions(formatter={'float': lambda x: "{0:0.3f}".format(x)})
 
 
 def conditional_x(x, total):
-    return comb(total, x) * comb(40-total, 10-x) / comb(40, 10)
+    return comb(total, x) * comb(40-total, 8-x) / comb(40, 8)
 
 def find_prob(x):
     x_and_common = 0.25 * conditional_x(x, 12)
     return x_and_common / (x_and_common + 0.5 * conditional_x(x, 10) + 0.25 * conditional_x(x, 8))
 
 t = PrettyTable(["Num cards", "Prob common suit"])
-for i in range(11):
+for i in range(9):
     t.add_row([i, f"{find_prob(i):.3f}"])
 print(t)
 
@@ -33,12 +33,12 @@ for i in range(4):
         possibles.append(possible2)
 
 
-# combo is of the form [2,2,3,3],
+# combo is of the form [1,2,2,3],
 def conditional(combo, total):
     res = 1
     for i in range(len(combo)):
         res *= comb(total[i], combo[i])
-    return res / comb(40, 10)
+    return res / comb(40, 8)
 
 # we return a 4-element array indicating the probs they are the common suit
 def find_probs(combo):
@@ -66,11 +66,11 @@ def combo_prob(combo):
 
 # Enumerate combos
 combos = []
-for a in range(11):
-    for b in range(11):
-        for c in range(11):
-            if a + b + c <= 10:
-                d = 10 - (a + b + c)
+for a in range(9):
+    for b in range(9):
+        for c in range(9):
+            if a + b + c <= 8:
+                d = 8 - (a + b + c)
                 combo = sorted([a,b,c,d])
                 if combo not in combos:
                     combos.append(combo)
