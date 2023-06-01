@@ -1,3 +1,5 @@
+## Introduction
+The game figgie is described at [https://figgie.com/](https://figgie.com/).
 
 ## Four Players
 ```
