@@ -16,6 +16,7 @@ The game figgie is described at [https://figgie.com/](https://figgie.com/).
 |     7     |      0.719       |
 |     8     |      0.825       |
 |     9     |      0.911       |
+|     10    |      0.971       |
 +-----------+------------------+
 +---------------+---------------+---------------------------+
 | Prob of combo |     Combo     |  Prob of each suit common |
